@@ -1,0 +1,56 @@
+user:
+  default:
+    # 用户名的默认前缀
+    username: user
+    # 用户的默认头像
+    avatar: http://d.lanrentuku.com/down/png/1904/business_avatar/8_avatar_2754583.png
+    # 用户描述
+    description: 这个人很懒，什么都没留下...
+
+spring:
+  application:
+    # 应用名称
+    name: text-online exam
+  datasource:
+    # 数据库驱动：
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 数据源名称
+    name: defaultDataSource
+    # 数据库连接地址
+    url: jdbc:mysql://localhost:3306/demo1
+    # 数据库用户名&密码：
+    username: root
+    password: wuyuanjain0
+#  jpa:
+#    #在调式的时候用，用于打印完成SQL语句(但是不打印参数),联合下面的logging.level一同打印最完整的SQL信息(语句+参数)
+#    show-sql: false
+#    hibernate:
+#      ddl-auto: update
+  servlet:
+    multipart:
+      max-file-size: 100MB # 最大支持文件大小
+      max-request-size: 100MB # 最大支持请求大小
+  profiles:
+    active: dev # 开发时配dev, 生产环境配prod，如果容器化直接运行make_docker.sh即可这里配啥无所谓
+server:
+  # 应用服务 WEB 访问端口
+  port: 80
+
+# 拦截器相关的配置
+interceptors:
+  # 不需要进行鉴权的接口地址，用逗号隔开
+#  auth-ignore-uris: ${server.servlet.context-path}/user/register,${server.servlet.context-path}/user/login
+
+redis:
+  host: localhost
+  port: 6379
+  timeout: 10
+  pool-max-wait: 500
+  pool-max-idle: 500
+  pool-max-total: 1000
+
+
+# SQL语句打印(能打印参数，设置为trace是打印完整语句，默认我们就关掉吧)
+#logging:
+#      level:
+#        org.hibernate.type.descriptor.sql.BasicBinder: off
